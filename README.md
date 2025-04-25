@@ -193,7 +193,7 @@ limx = 10
 limy = 25
 
 # Ploteamos los resultados separando los genes en aquellos que no cambian (grises), aquellos que suben (rojos) y aquellos que bajan (azules)
-plot(DEG_qlf$logFC[!(up | down)], -log10(DEG_qlf$FDR[!(up | down)]), pch=19, col="gray", cex=0.4, xlab="log2 Expression fold change", ylab="-log10 FDR", main=paste("Volcano plot ", name, sep=""), xlim=c(-limx,limx),ylim=c(0,limy))
+plot(DEG_qlf$logFC[!(up | down)], -log10(DEG_qlf$FDR[!(up | down)]), pch=19, col="gray", cex=0.4, xlab="log2 Expression fold change", ylab="-log10 FDR", main="Volcano plot ", xlim=c(-limx,limx),ylim=c(0,limy))
 # Agregamos los up
 points(DEG_qlf$logFC[up], -log10(DEG_qlf$FDR[up]), pch=19, col="red", cex=0.4)
 # Agregamos los down
@@ -255,7 +255,7 @@ Heatmap(zscore_top, cluster_rows = T, cluster_columns = F, row_labels = gene_nam
 
 Ya que tenemos la lista de genes que suben y que bajan, conviene saber un poco más de ellos. Para eso, siempre recomiendo hacer un análisis de Enriquecimiento con la plataforma [Enrichr](https://maayanlab.cloud/Enrichr/) y un análisis de interacción de proteínas usando [STRING](https://string-db.org/).
 
-### 3.1 DAVID
+### 3.1 Enrichr
 
 Para que el análisis de GO de Enrichr sea robusto, necesitamos usar una lista de background relevante. En el caso de los estudios de RNA-seq el background debe ser la lista de genes que están expresados. Podemos obtener esa lista fácilmente en R, al igual que las ids de los genes up y downregulated:
 
